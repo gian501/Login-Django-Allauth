@@ -46,7 +46,23 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    }
+}
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -159,7 +175,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True #esto hace que el email al registrarse no se pueda repetir sino nos tira :que el usuario esta registrado
 
-#ACCOUNT_EMAIL_VERIFICATION (=”optional”)
+ACCOUNT_EMAIL_VERIFICATION ="Gian_5555"
 #ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =3 #a los cuantos dias expira la autentificacion si no lo hace 
 
 ACCOUNT_LOGOUT_ON_GET = True # se desloguea sin preguntar o pedir confirmacion
